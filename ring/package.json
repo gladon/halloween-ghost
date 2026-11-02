@@ -1,0 +1,13 @@
+{
+  "name": "halloween-ghost-ring",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "auth": "ring-auth-cli",
+    "cameras": "node probe.mjs",
+    "stream": "node stream.mjs"
+  },
+  "dependencies": {
+    "ring-client-api": "^14.3.0"
+  }
+}

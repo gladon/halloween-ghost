@@ -1,0 +1,22 @@
+# --- secrets: never commit ---
+token.json
+**/token.json
+.env
+.env.*
+*.pem
+*.key
+hardware_id
+
+# --- runtime output (contains photos of visitors) ---
+ring/frames/
+detector/hits/
+*.jpg
+*.mp4
+*.mov
+
+# --- deps / models ---
+node_modules/
+.venv/
+__pycache__/
+*.pt
+.DS_Store
