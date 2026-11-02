@@ -1,5 +1,7 @@
 # 👻 Wave-back window ghost
 
+<p align="center"><img src="docs/preview.gif" width="420" alt="The ghost greeting, sneezing, showing off its bat friend, and the rare golden ghost"></p>
+
 A cute ghost projected in an upstairs window that **waves back at trick-or-treaters**.
 A Ring camera watches the driveway, a pose-detection AI on a Mac spots someone waving,
 and the ghost reacts. It greets new arrivals first ("Hiii! Wave at me!") so people know to wave.
@@ -157,13 +159,18 @@ It writes `raw_*.mp3`. Trim the silence and rename them to the plain names (`hi.
 ```
 start.sh               one-command start
 ghost/index.html       the ghost (canvas animation + sounds)
-ghost/ghost_v1.html    simpler first version (http://127.0.0.1:8787/v1)
 ghost/server.mjs       tiny local server: serves the page and relays /greet /wave /react to it
 ghost/sfx/             voice clips
 ring/stream.mjs        Ring live view → ring/frames/latest.jpg, about 6 frames/second
 ring/probe.mjs         list cameras / test snapshot + live view
 detector/wave.py       YOLO pose: tracks people, detects greetings and waves, calls the server
 tools/make_voices.sh   regenerate the voice clips with ElevenLabs
+docs/preview.gif       the animation above
 ```
 
-Ring access uses the unofficial [ring-client-api](https://github.com/dgreif/ring) library. Ring has no official API, so things may break if Ring changes theirs.
+## License and credits
+
+- **Code:** MIT (see [LICENSE](LICENSE)).
+- **Voice clips** (`ghost/sfx/*.mp3`): **not** covered by the MIT license. They were generated with [ElevenLabs](https://elevenlabs.io) on the free plan, so they're shared for **personal, non-commercial use only**, with credit: *Voice by ElevenLabs*. For anything commercial, make your own clips (see "Changing the voice").
+- **Pose AI:** [Ultralytics YOLO](https://github.com/ultralytics/ultralytics), which is licensed **AGPL-3.0**. Fine for a home project; read their license before using it in a product or service.
+- Ring access uses the unofficial [ring-client-api](https://github.com/dgreif/ring) library. Ring has no official API, so things may break if Ring changes theirs.

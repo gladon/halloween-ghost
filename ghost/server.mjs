@@ -1,5 +1,5 @@
 // Ghost trigger server. Serves the ghost page + sound clips and pushes events to it.
-//   GET /            -> ghost (index.html)           GET /v1 -> simpler original ghost
+//   GET /            -> ghost (index.html)
 //   GET /events      -> SSE stream the page listens to
 //   GET /greet?side=left|right   -> someone arrived: ghost pops up and invites a wave
 //   GET /wave?side=left|right    -> someone waved: random reaction
@@ -23,7 +23,7 @@ const log = (...a) => console.log(new Date().toLocaleTimeString(), ...a);
 
 http.createServer((req, res) => {
   const u = new URL(req.url, 'http://x'), q = k => u.searchParams.get(k);
-  const page = { '/': 'index.html', '/index.html': 'index.html', '/v1': 'ghost_v1.html' }[u.pathname];
+  const page = { '/': 'index.html', '/index.html': 'index.html' }[u.pathname];
   if (page) { res.writeHead(200, { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store' }); return fs.createReadStream(path.join(DIR, page)).pipe(res); }
   const m = u.pathname.match(/^\/sfx\/([a-z0-9]+)\.mp3$/);
   if (m) { const f = path.join(DIR, 'sfx', m[1] + '.mp3'); if (!fs.existsSync(f)) { res.writeHead(404); return res.end(); }
